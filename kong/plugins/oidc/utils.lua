@@ -48,7 +48,7 @@ function M.get_options(config, ngx)
   return {
     client_id = config.client_id,
     client_secret = config.client_secret,
-    discovery = config.discovery,
+    discovery = "https://" .. kong.request.get_host() .. ":" .. kong.request.get_port() .. config.discovery,
     introspection_endpoint = config.introspection_endpoint,
     introspection_endpoint_auth_method = config.introspection_endpoint_auth_method,
     introspection_cache_ignore = config.introspection_cache_ignore,
